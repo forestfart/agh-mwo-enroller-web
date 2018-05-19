@@ -2,7 +2,7 @@
   <div id="app">
     <h1>Witaj w systemie zapisów na zajęcia</h1>
       <div v-if="!authenticatedEmail">
-        <login-form @login="logMeIn($event)"></login-form>
+        <login-form @login="logMeIn($event)" :button-label="'Wchodzę'"></login-form>
       </div>
       <div v-else>
         Witaj {{ authenticatedEmail }}<button @click="logOut()">Wyloguj</button>
