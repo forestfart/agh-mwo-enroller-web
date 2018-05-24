@@ -1,9 +1,17 @@
-# codemix-vanilla-react
+# Vue Project
 
-Template for project creation of Vue inside CodeMix
+## Prerequisites
 
-# Contents
+- NodeJS ^8.9
+- npm ^5.6
 
-This template project is just an example Hello World that guide you through the use of Vue to build a very simple web application that display the Hello World!!! Greeting.
+## Steps to Run inside CodeMix
 
-This example has been started with the vue-cli and webpack-simple
+
+1. From the `Quick Open`  Command Palette (ctrl/cmd + shift + p) search for:
+     `Terminal: Create New Integrated Terminal`
+2. From the `Quick Open` options select this project.
+3. Once you are inside the Terminal, execute: `npm install`
+4. Finally to run this example run `npm run dev`
+5. Open your browser on http://localhost:8080
+6. To build run `npm run build` and generate HTML/CSS/JS minification.

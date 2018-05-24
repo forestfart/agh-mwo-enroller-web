@@ -2,11 +2,12 @@
   <div id="app">
     <h1>Witaj w systemie zapisów na zajęcia</h1>
       <div v-if="!authenticatedEmail">
-        <login-form @login="logMeIn($event)" :button-label="'Wchodzę'"></login-form>
+        <login-form @login="logMeIn($event)" :button-label=buttonLabelToDisplay></login-form>
       </div>
-      <div v-else>
-        Witaj {{ authenticatedEmail }}<button @click="logOut()">Wyloguj</button>
-    </div>
+      <div id="app-status" v-else>
+          <app-status @login="logOut($event)" :username=authenticatedEmail :button-label=buttonLabelToDisplay></app-status>
+          <meetings-page></meetings-page>
+      </div>
   </div>
 </template>
 
@@ -14,10 +15,12 @@
 <script>
 import "milligram";
 import LoginForm from "./LoginForm";
+import AppStatus from "./AppStatus";
+import MeetingsPage from "./meetings/MeetingsPage";
 
 export default {
   name: 'app',
-  components: {LoginForm},
+  components: {LoginForm, AppStatus, MeetingsPage},
   data () {
     return {
       email: '',
@@ -41,6 +44,15 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+
+#app-status {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: left;
   color: #2c3e50;
   margin-top: 60px;
 }
