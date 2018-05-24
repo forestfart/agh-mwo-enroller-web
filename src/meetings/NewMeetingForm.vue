@@ -1,16 +1,17 @@
-<template>
+<template xmlns="http://www.w3.org/1999/html">
     <form @submit.prevent="addNewMeeting()">
         <h3>Dodaj nowe spotkanie</h3>
         <label>Nazwa</label>
         <input type="text" v-model="newMeeting.name">
         <label>Opis</label>
         <textarea v-model="newMeeting.description"></textarea>
-        <button>Dodaj</button>
+        <div id="warning"><button>Dodaj</button> {{ sideWarning }}</div>
     </form>
 </template>
 
 <script>
     export default {
+        props: ['sideWarning'],
         data() {
             return {
                 newMeeting: {}
@@ -20,6 +21,11 @@
             addNewMeeting() {
                 this.$emit('added', this.newMeeting);
                 this.newMeeting = {};
+            }
+        },
+        computed: {
+            noMeetingNameMessage() {
+                return this.sideWarning || '';
             }
         }
     }

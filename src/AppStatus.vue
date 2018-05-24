@@ -1,6 +1,10 @@
 <template>
    <div>
-        <label>Witaj {{ username }}! <button @click="enter()">{{ buttonLabelToDisplay }}</button></label>
+        <h2>Witaj {{ username }}!
+            <div class="float-right">
+                <button class="button button-outline" @click="enter()">{{ buttonLabelToDisplay }}</button>
+            </div>
+        </h2>
    </div>
 </template>
 
@@ -19,7 +23,7 @@ export default {
     },
     computed: {
         buttonLabelToDisplay() {
-            return this.buttonLabel || 'Wyloguj się';
+            return this.buttonLabel || 'Wyloguj';
         }
     }
 }

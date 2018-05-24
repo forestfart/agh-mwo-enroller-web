@@ -5,8 +5,8 @@
         <login-form @login="logMeIn($event)" :button-label=buttonLabelToDisplay></login-form>
       </div>
       <div id="app-status" v-else>
-          <app-status @login="logOut($event)" :username=authenticatedEmail :button-label=buttonLabelToDisplay></app-status>
-          <meetings-page></meetings-page>
+        <app-status @login="logOut($event)" :username=authenticatedEmail :button-label=buttonLabelToDisplay></app-status>
+        <meetings-page></meetings-page>
       </div>
   </div>
 </template>
@@ -46,6 +46,8 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+  margin-left: 100px;
+  margin-right: 100px;
 }
 
 #app-status {
@@ -56,6 +58,12 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+
+#warning {
+  color: #ff0000;
+}
+
+
 
 h1, h2 {
   font-weight: normal;

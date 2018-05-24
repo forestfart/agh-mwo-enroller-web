@@ -1,7 +1,7 @@
 <template>
 <div>
     <h2>Zajęcia</h2>
-    <new-meeting-form @added="addNewMeeting($event)"></new-meeting-form>
+    <new-meeting-form @added="addNewMeeting($event)" :side-warning=noMeetingNameMessage></new-meeting-form>
     <meetings-list :meetings="meetings"></meetings-list>
 </div>
 </template>
@@ -14,12 +14,18 @@
         components: {NewMeetingForm, MeetingsList},
         data() {
             return {
-                meetings: []
+                meetings: [],
+                noMeetingNameMessage: ''
             };
         },
         methods: {
             addNewMeeting(meeting) {
-                this.meetings.push(meeting);
+                if (meeting.name) {
+                    this.meetings.push(meeting);
+                    this.noMeetingNameMessage = '';
+                } else {
+                    this.noMeetingNameMessage = 'Spotkanie musi miec nazwe!';
+                }
             }
         }
     }
