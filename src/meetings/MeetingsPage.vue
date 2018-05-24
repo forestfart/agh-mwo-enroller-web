@@ -2,7 +2,7 @@
 <div>
     <h2>Zajęcia</h2>
     <new-meeting-form @added="addNewMeeting($event)" :side-warning=noMeetingNameMessage></new-meeting-form>
-    <meetings-list :meetings="meetings"></meetings-list>
+    <meetings-list :username="username" :meetings="meetings"></meetings-list>
 </div>
 </template>
 
@@ -11,6 +11,7 @@
     import MeetingsList from "./MeetingsList";
 
     export default {
+        props: ['username'],
         components: {NewMeetingForm, MeetingsList},
         data() {
             return {

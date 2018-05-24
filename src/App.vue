@@ -6,7 +6,7 @@
       </div>
       <div id="app-status" v-else>
         <app-status @login="logOut($event)" :username=authenticatedEmail :button-label=buttonLabelToDisplay></app-status>
-        <meetings-page></meetings-page>
+        <meetings-page :username="authenticatedEmail"></meetings-page>
       </div>
   </div>
 </template>
