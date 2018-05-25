@@ -2,16 +2,16 @@
     <table v-if="meetings.length > 0">
         <thead>
         <tr>
-            <th>Nazwa spotkania</th>
-            <th>Opis</th>
-            <th>Uczestnicy</th>
+            <th width=25%> Nazwa spotkania</th>
+            <th width=25%>Opis</th>
+            <th widht=50%>Uczestnicy</th>
         </tr>
         </thead>
         <tbody>
         <tr v-for="meeting in meetings" :key="meeting.name">
             <td>{{ meeting.name }}</td>
             <td>{{ meeting.description }}</td>
-            <td><participants-list :username="username"></participants-list></td>
+            <participants-list :username="username"></participants-list>
         </tr>
         </tbody>
     </table>

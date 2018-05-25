@@ -1,13 +1,8 @@
 <template>
-    <tbody v-if="participants.length > 0">
-        <tr v-for="participant in participants" :key="username">
-            o {{ participant }}
-        </tr>
-        <button v-if="participants" class="float-right" @click="addNewParticipant">add</button>
-    </tbody>
-    <tbody v-else>
-        <button v-if="participants" class="float-right" @click="addNewParticipant">add</button>
-    </tbody>
+    <div>
+        <td width="100%"><tr v-for="participant in participants" :key="username">o {{ participant }}</tr></td>
+        <td width="100%" valign="middle"><button class="float-right" @click="addNewParticipant">add</button></td>
+    </div>
 </template>
 
 <script>
@@ -26,3 +21,4 @@
         }
     }
 </script>
+
