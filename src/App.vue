@@ -1,16 +1,15 @@
 <template>
   <div id="app">
     <h1>Witaj w systemie zapisów na zajęcia</h1>
-      <div v-if="!authenticatedEmail">
+      <div v-show="!authenticatedEmail">
         <login-form @login="logMeIn($event)" :button-label=buttonLabelToDisplay></login-form>
       </div>
-      <div id="app-status" v-else>
+      <div id="app-status" v-show="authenticatedEmail">
         <app-status @login="logOut($event)" :username=authenticatedEmail :button-label=buttonLabelToDisplay></app-status>
         <meetings-page :username="authenticatedEmail"></meetings-page>
       </div>
   </div>
 </template>
-
 
 <script>
 import "milligram";

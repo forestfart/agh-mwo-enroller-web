@@ -1,19 +1,12 @@
 <template>
     <tbody v-if="participants.length > 0">
         <tr v-for="participant in participants" :key="username">
-                <td>o {{ username }}</td>
+            o {{ participant }}
         </tr>
-        <div align="right">
-            <button v-if="participants" class="float-right" @click="addNewParticipant">add</button>
-        </div>
+        <button v-if="participants" class="float-right" @click="addNewParticipant">add</button>
     </tbody>
     <tbody v-else>
-            <tr>
-                none
-            </tr>
-            <th>
-                <button v-if="participants" class="float-right" @click="addNewParticipant">add</button>
-            </th>
+        <button v-if="participants" class="float-right" @click="addNewParticipant">add</button>
     </tbody>
 </template>
 
@@ -28,7 +21,7 @@
         },
         methods: {
             addNewParticipant() {
-                this.participants.push('asd');
+                this.participants.push(this.username);
             }
         }
     }
