@@ -1,7 +1,8 @@
 <template>
 <div>
     <h2>Zajęcia</h2>
-    <new-meeting-form @added="addNewMeeting($event)" :side-warning=noMeetingNameMessage></new-meeting-form>
+    <button v-show="!activeAddMeetingPanel" @click="showAddMeetingPanel">dodaj nowe spotkanie</button>
+    <new-meeting-form v-show="activeAddMeetingPanel" @added="addNewMeeting($event)" :side-warning=noMeetingNameMessage></new-meeting-form>
     <meetings-list @modifyParticipants="modifyParticipants($event)" @removeMeeting="removeMeeting" :username="username" :meetings="meetings"></meetings-list>
 </div>
 </template>
@@ -16,7 +17,8 @@
         data() {
             return {
                 meetings: [],
-                noMeetingNameMessage: ''
+                noMeetingNameMessage: '',
+                activeAddMeetingPanel: false
             };
         },
         methods: {
@@ -27,6 +29,7 @@
                 } else {
                     this.noMeetingNameMessage = 'Spotkanie musi miec nazwe!';
                 }
+                this.activeAddMeetingPanel = false;
             },
             modifyParticipants(meetingId) {
                 if (this.meetings[meetingId].participants.includes(this.username)) {
@@ -37,6 +40,9 @@
             },
             removeMeeting: function (meetingId) {
                 this.meetings.splice(meetingId, 1);
+            },
+            showAddMeetingPanel() {
+                this.activeAddMeetingPanel = true;
             }
         }
     }

@@ -5,7 +5,7 @@
         <input type="text" v-model="newMeeting.name">
         <label>Opis</label>
         <textarea v-model="newMeeting.description"></textarea>
-        <div id="warning"><button v-on:keyup.enter="addNewMeeting()" >Dodaj</button> {{ sideWarning }}</div>
+        <div id="warning"><button @keyup.enter="addNewMeeting()">Dodaj</button> {{ sideWarning }}</div>
     </form>
 </template>
 

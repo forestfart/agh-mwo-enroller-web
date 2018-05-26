@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h3>Zaplanowane zajecia ({{ meetings.length }})</h3>
+        <h4 v-if="meetings.length > 0">Zaplanowane zajecia ({{ meetings.length }})</h4>
         <table v-if="meetings.length > 0">
             <thead>
             <tr>
