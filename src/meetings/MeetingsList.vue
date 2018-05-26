@@ -5,17 +5,15 @@
             <th width=25%> Nazwa spotkania</th>
             <th width=25%>Opis</th>
             <th widht=50%>Uczestnicy</th>
-            <th></th>
         </tr>
         </thead>
         <tbody>
         <tr v-for="(meeting, meetingId) in meetings" :key="meetingId">
             <td>{{ meeting.name }}</td>
             <td>{{ meeting.description }}</td>
-            <td>{{ meeting.participants}}</td>
-            <participants-list :username="username"></participants-list>
+            <td><list v-for="participant in meeting.participants">&#9758; {{ participant }}<br /></list></td>
             <td><button @click="addNewParticipant(meetingId)">add</button></td>
-            <td><button @click="removeMeeting(meetingId)">Usun</button></td>
+            <td v-if="meeting.participants.length < 1"><button @click="removeMeeting(meetingId)">Usun puste spotkanie</button></td>
         </tr>
         </tbody>
     </table>
