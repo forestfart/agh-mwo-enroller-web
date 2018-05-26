@@ -1,7 +1,7 @@
 <template>
    <div>
         <label>Zaloguj się e-mailem</label>
-        <input type="email" v-model="email">
+        <input v-on:keyup.enter="enter()" type="email" v-model="email">
         <button @click="enter()">{{ buttonLabelToDisplay }}</button>
    </div>
 </template>

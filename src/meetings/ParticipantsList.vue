@@ -10,8 +10,7 @@
         props: ['username'],
         data() {
             return {
-                participants: [],
-                email: ''
+                participants: []
             }
         },
         methods: {
