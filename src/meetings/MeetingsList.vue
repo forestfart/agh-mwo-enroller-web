@@ -1,36 +1,53 @@
 <template>
-    <table v-if="meetings.length > 0">
-        <thead>
-        <tr>
-            <th width=25%> Nazwa spotkania</th>
-            <th width=25%>Opis</th>
-            <th widht=50%>Uczestnicy</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr v-for="(meeting, meetingId) in meetings" :key="meetingId">
-            <td>{{ meeting.name }}</td>
-            <td>{{ meeting.description }}</td>
-            <td><list v-for="participant in meeting.participants">&#9758; {{ participant }}<br /></list></td>
-            <td><button @click="addNewParticipant(meetingId)">add</button></td>
-            <td v-if="meeting.participants.length < 1"><button @click="removeMeeting(meetingId)">Usun puste spotkanie</button></td>
-        </tr>
-        </tbody>
-    </table>
-    <table v-else>
-        <h5>Brak zaplanowanych spotkan.</h5>
-    </table>
+    <div>
+        <h3>Zaplanowane zajecia ({{ meetings.length }})</h3>
+        <table v-if="meetings.length > 0">
+            <thead>
+            <tr>
+                <th>Nazwa spotkania</th>
+                <th>Opis</th>
+                <th>Uczestnicy</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(meeting, meetingId) in meetings" :key="meetingId">
+                    <td>{{ meeting.name }}</td>
+                    <td>{{ meeting.description }}</td>
+                    <td>
+                        <list v-for="participant in meeting.participants">&#9758; {{ participant }}<br /></list>
+                    </td>
+                    <td>
+                        <div class="float-right">
+                            <button @click="modifyParticipants(meetingId)" class="button button-outline">{{ buttonLabelToDisplay(meetingId) }}</button>
+                            <button v-if="meeting.participants.length < 1" @click="removeMeeting(meetingId)">usun puste spotkanie</button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table v-else>
+            <h5>Brak zaplanowanych spotkan.</h5>
+        </table>
+    </div>
 </template>
 
 <script>
     export default {
-        props: ['username', 'meetings'],
+        props: ['username', 'meetings', 'buttonLabel'],
         methods: {
-            addNewParticipant: function(meetingId) {
-                this.$emit('addParticipant', meetingId)
+            modifyParticipants: function(meetingId) {
+                this.$emit('modifyParticipants', meetingId)
             },
             removeMeeting: function (meetingId) {
                 this.$emit('removeMeeting', meetingId);
+            },
+            buttonLabelToDisplay: function(meetingId) {
+                if (this.meetings[meetingId].participants.includes(this.username)) {
+                    return "wypisz sie";
+                } else {
+                    return "zapisz sie";
+                }
             }
         }
     }

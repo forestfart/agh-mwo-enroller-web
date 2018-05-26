@@ -2,7 +2,7 @@
 <div>
     <h2>Zajęcia</h2>
     <new-meeting-form @added="addNewMeeting($event)" :side-warning=noMeetingNameMessage></new-meeting-form>
-    <meetings-list @addParticipant="addNewParticipant($event)" @removeMeeting="removeMeeting" :username="username" :meetings="meetings"></meetings-list>
+    <meetings-list @modifyParticipants="modifyParticipants($event)" @removeMeeting="removeMeeting" :username="username" :meetings="meetings"></meetings-list>
 </div>
 </template>
 
@@ -28,8 +28,12 @@
                     this.noMeetingNameMessage = 'Spotkanie musi miec nazwe!';
                 }
             },
-            addNewParticipant(meetingId) {
-                this.meetings[meetingId].participants.push(this.username);
+            modifyParticipants(meetingId) {
+                if (this.meetings[meetingId].participants.includes(this.username)) {
+                    this.meetings[meetingId].participants.pop(this.username);
+                } else {
+                    this.meetings[meetingId].participants.push(this.username);
+                };
             },
             removeMeeting: function (meetingId) {
                 this.meetings.splice(meetingId, 1);
