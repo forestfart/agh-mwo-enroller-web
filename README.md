@@ -1,13 +1,12 @@
-# Vue Project
+## front-end for the agh-mwo-enroller-rest repository
 
-## Prerequisites
 
+## Vue Project
+### Prerequisites
 - NodeJS ^8.9
 - npm ^5.6
 
-## Steps to Run inside CodeMix
-
-
+### Steps to Run inside CodeMix
 1. From the `Quick Open`  Command Palette (ctrl/cmd + shift + p) search for:
      `Terminal: Create New Integrated Terminal`
 2. From the `Quick Open` options select this project.

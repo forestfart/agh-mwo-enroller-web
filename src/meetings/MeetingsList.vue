@@ -15,7 +15,7 @@
                     <td>{{ meeting.name }}</td>
                     <td>{{ meeting.description }}</td>
                     <td>
-                        <list v-for="participant in meeting.participants">&#9758; {{ participant }}<br /></list>
+                        <list v-for="participant in meeting.participants" :key="participant">&#9758; {{ participant }}<br /></list>
                     </td>
                     <td>
                         <div class="float-right">
